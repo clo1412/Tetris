@@ -19,19 +19,14 @@ public class GlassPane extends JComponent {
 	private Board board;
 
 	public GlassPane() {
+		errorCatcher(border, "/border.png");
+		errorCatcher(nexts, "/nextText.png");
+		errorCatcher(hold, "/holdText.png");
+	}
 
+	private void errorCatcher(BufferedImage bfrd, String args) {
 		try {
-			border = ImageIO.read(GlassPane.class.getResource("/border.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		try {
-			nexts = ImageIO.read(GlassPane.class.getResource("/nextText.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		try {
-			hold = ImageIO.read(GlassPane.class.getResource("/holdText.png"));
+			bfrd = ImageIO.read(GlassPane.class.getResource(args));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

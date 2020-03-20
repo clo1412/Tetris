@@ -19,30 +19,42 @@ public class ButtonPanel extends JButton implements ActionListener {
 	private BufferedImage icon;
 
 	public ButtonPanel() {
-
 		System.out.println("a");
-		// ini layoutnya
-		// gimanac aranya supaya bisa ketengah ga ya
 		setLayout(new FlowLayout());
-		// setLayout(null);
+		initializeIcon();
+		initializeButtonLocation();
+		setButtonVisible();
+		addButton();
+		initializeButtonActionListener();
+		setVisible(true);
+	}
+
+	private void initializeIcon() {
 		try {
 			icon = ImageIO.read(Board.class.getResource("/icon.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
 
-		// setLocation(500, 200);
-		btnPlay.setLocation(500, 200);
-		btnHelp.setLocation(300, 300);
-		btnHelp.setVisible(true);
-		btnPlay.setVisible(true);
+	private void addButton() {
 		add(btnHelp);
 		add(btnPlay);
-		// btnHelp.setSize(100, 100);
+	}
+
+	private void initializeButtonActionListener() {
 		btnHelp.addActionListener(this);
 		btnPlay.addActionListener(this);
-		setVisible(true);
+	}
 
+	private void setButtonVisible() {
+		btnHelp.setVisible(true);
+		btnPlay.setVisible(true);
+	}
+
+	private void initializeButtonLocation() {
+		btnPlay.setLocation(500, 200);
+		btnHelp.setLocation(300, 300);
 	}
 
 	@Override

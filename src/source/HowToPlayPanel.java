@@ -13,6 +13,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HowToPlayPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final int IMAGE_X = 150;
+	private static final int IMAGE_SIZE = 60;
+	private static final int LBL_HEIGHT = 50;
+	private static final int LBL_WIDTH = 500;
+	private static final Color YELLOW_COLOR = Color.YELLOW;
+	private static final int FONT_SIZE = 20;
+	private static final Color BLACK_COLOR = Color.BLACK;
+	private static final Color RED_COLOR = Color.RED;
+	private static final Color BLUE_COLOR = Color.BLUE;
+	private static final String ORANGE_KID_FONT = "Orange Kid";
+	private static final int BOLD = Font.BOLD;
+	private static final int JLABEL_CENTER = JLabel.CENTER;
 	BufferedImage up;
 	BufferedImage down;
 	BufferedImage right;
@@ -35,22 +51,22 @@ public class HowToPlayPanel extends JPanel {
 		g.drawImage(icon, 310, 400, 500, 740, null);
 		g.drawImage(icon1, -170, 400, 500, 740, null);
 		if (stat == 1)
-			g.drawImage(up, 150, 100, 60, 60, null);
+			g.drawImage(up, 150, 100, IMAGE_SIZE, IMAGE_SIZE, null);
 		if (stat == 2)
-			g.drawImage(down, 150, 160, 60, 60, null);
+			g.drawImage(down, IMAGE_X, 160, IMAGE_SIZE, IMAGE_SIZE, null);
 		if (stat == 3)
-			g.drawImage(left, 150, 220, 60, 60, null);
+			g.drawImage(left, IMAGE_X, 220, IMAGE_SIZE, IMAGE_SIZE, null);
 		if (stat == 4) {
-			g.drawImage(right, 150, 280, 60, 60, null);
+			g.drawImage(right, IMAGE_X, 280, IMAGE_SIZE, IMAGE_SIZE, null);
 		}
 		if (stat == 5) {
-			g.drawImage(shift, 150, 400, 60, 60, null);
+			g.drawImage(shift, IMAGE_X, 400, IMAGE_SIZE, IMAGE_SIZE, null);
 		}
 		if (stat == 6) {
-			g.drawImage(space, 150, 340, 60, 60, null);
+			g.drawImage(space, IMAGE_X, 340, IMAGE_SIZE, IMAGE_SIZE, null);
 		}
 		if (stat == 7) {
-			g.drawImage(space, 150, 450, 60, 60, null);
+			g.drawImage(space, IMAGE_X, 450, IMAGE_SIZE, IMAGE_SIZE, null);
 		}
 	}
 
@@ -100,10 +116,10 @@ public class HowToPlayPanel extends JPanel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		lbl_title = new JLabel("HOW TO PLAY", JLabel.CENTER);
+		lbl_title = new JLabel("HOW TO PLAY", JLABEL_CENTER);
 		lbl_title.setBounds(100, 20, 500, 50);
-		lbl_title.setFont(new Font("Orange Kid", Font.BOLD, 26));
-		lbl_title.setForeground(Color.BLUE);
+		lbl_title.setFont(new Font(ORANGE_KID_FONT, BOLD, 26));
+		lbl_title.setForeground(BLUE_COLOR);
 		lbl_title.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -118,13 +134,13 @@ public class HowToPlayPanel extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lbl_title.setForeground(Color.BLUE);
+				lbl_title.setForeground(BLUE_COLOR);
 				stat = 0;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lbl_title.setForeground(Color.RED);
+				lbl_title.setForeground(RED_COLOR);
 				stat = 1;
 
 			}
@@ -137,10 +153,10 @@ public class HowToPlayPanel extends JPanel {
 		});
 		add(lbl_title);
 
-		lbl_up = new JLabel("Rotate Brick", JLabel.CENTER);
-		lbl_up.setBounds(100, 100, 500, 50);
-		lbl_up.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_up.setForeground(Color.BLACK);
+		lbl_up = new JLabel("Rotate Brick", JLABEL_CENTER);
+		lbl_up.setBounds(100, 100, LBL_WIDTH, LBL_HEIGHT);
+		lbl_up.setFont(new Font(ORANGE_KID_FONT, BOLD, FONT_SIZE));
+		lbl_up.setForeground(BLACK_COLOR);
 		lbl_up.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -155,13 +171,13 @@ public class HowToPlayPanel extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lbl_up.setForeground(Color.BLACK);
+				lbl_up.setForeground(BLACK_COLOR);
 				stat = 0;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lbl_up.setForeground(Color.RED);
+				lbl_up.setForeground(RED_COLOR);
 				stat = 1;
 
 			}
@@ -174,10 +190,10 @@ public class HowToPlayPanel extends JPanel {
 		});
 		add(lbl_up);
 
-		lbl_down = new JLabel("Soft Drop", JLabel.CENTER);
-		lbl_down.setBounds(100, 160, 500, 50);
-		lbl_down.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_down.setForeground(Color.BLACK);
+		lbl_down = new JLabel("Soft Drop", JLABEL_CENTER);
+		lbl_down.setBounds(100, 160, LBL_WIDTH, LBL_HEIGHT);
+		lbl_down.setFont(new Font(ORANGE_KID_FONT, BOLD, FONT_SIZE));
+		lbl_down.setForeground(BLACK_COLOR);
 		lbl_down.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -192,13 +208,13 @@ public class HowToPlayPanel extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lbl_down.setForeground(Color.BLACK);
+				lbl_down.setForeground(BLACK_COLOR);
 				stat = 0;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lbl_down.setForeground(Color.RED);
+				lbl_down.setForeground(RED_COLOR);
 				stat = 2;
 
 			}
@@ -211,10 +227,10 @@ public class HowToPlayPanel extends JPanel {
 		});
 		add(lbl_down);
 
-		lbl_left = new JLabel("Move To Left", JLabel.CENTER);
-		lbl_left.setBounds(100, 220, 500, 50);
-		lbl_left.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_left.setForeground(Color.BLACK);
+		lbl_left = new JLabel("Move To Left", JLABEL_CENTER);
+		lbl_left.setBounds(100, 220, LBL_WIDTH, LBL_HEIGHT);
+		lbl_left.setFont(new Font(ORANGE_KID_FONT, BOLD, FONT_SIZE));
+		lbl_left.setForeground(BLACK_COLOR);
 		lbl_left.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -229,13 +245,13 @@ public class HowToPlayPanel extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lbl_left.setForeground(Color.BLACK);
+				lbl_left.setForeground(BLACK_COLOR);
 				stat = 0;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lbl_left.setForeground(Color.RED);
+				lbl_left.setForeground(RED_COLOR);
 				stat = 3;
 			}
 
@@ -247,10 +263,10 @@ public class HowToPlayPanel extends JPanel {
 		});
 		add(lbl_left);
 
-		lbl_right = new JLabel("Move To Right", JLabel.CENTER);
-		lbl_right.setBounds(100, 280, 500, 50);
-		lbl_right.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_right.setForeground(Color.BLACK);
+		lbl_right = new JLabel("Move To Right", JLABEL_CENTER);
+		lbl_right.setBounds(100, 280, LBL_WIDTH, LBL_HEIGHT);
+		lbl_right.setFont(new Font(ORANGE_KID_FONT, BOLD, FONT_SIZE));
+		lbl_right.setForeground(BLACK_COLOR);
 		lbl_right.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -265,13 +281,13 @@ public class HowToPlayPanel extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lbl_right.setForeground(Color.BLACK);
+				lbl_right.setForeground(BLACK_COLOR);
 				stat = 0;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lbl_right.setForeground(Color.RED);
+				lbl_right.setForeground(RED_COLOR);
 				stat = 4;
 			}
 
@@ -283,10 +299,10 @@ public class HowToPlayPanel extends JPanel {
 		});
 		add(lbl_right);
 
-		lbl_shift = new JLabel("Change Brick", JLabel.CENTER);
-		lbl_shift.setBounds(100, 400, 500, 50);
-		lbl_shift.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_shift.setForeground(Color.BLACK);
+		lbl_shift = new JLabel("Change Brick", JLABEL_CENTER);
+		lbl_shift.setBounds(100, 400, LBL_WIDTH, LBL_HEIGHT);
+		lbl_shift.setFont(new Font(ORANGE_KID_FONT, BOLD, FONT_SIZE));
+		lbl_shift.setForeground(BLACK_COLOR);
 		lbl_shift.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -301,13 +317,13 @@ public class HowToPlayPanel extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lbl_shift.setForeground(Color.BLACK);
+				lbl_shift.setForeground(BLACK_COLOR);
 				stat = 0;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lbl_shift.setForeground(Color.RED);
+				lbl_shift.setForeground(RED_COLOR);
 				stat = 5;
 			}
 
@@ -319,10 +335,10 @@ public class HowToPlayPanel extends JPanel {
 		});
 		add(lbl_shift);
 
-		lbl_space2 = new JLabel("Go To Main Menu After KO!", JLabel.CENTER);
-		lbl_space2.setBounds(100, 450, 500, 50);
-		lbl_space2.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_space2.setForeground(Color.BLACK);
+		lbl_space2 = new JLabel("Go To Main Menu After KO!", JLABEL_CENTER);
+		lbl_space2.setBounds(100, 450, LBL_WIDTH, LBL_HEIGHT);
+		lbl_space2.setFont(new Font(ORANGE_KID_FONT, BOLD, FONT_SIZE));
+		lbl_space2.setForeground(BLACK_COLOR);
 		lbl_space2.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -337,13 +353,13 @@ public class HowToPlayPanel extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lbl_space2.setForeground(Color.BLACK);
+				lbl_space2.setForeground(BLACK_COLOR);
 				stat = 0;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lbl_space2.setForeground(Color.RED);
+				lbl_space2.setForeground(RED_COLOR);
 				stat = 7;
 			}
 
@@ -355,10 +371,10 @@ public class HowToPlayPanel extends JPanel {
 		});
 		add(lbl_space2);
 
-		lbl_space = new JLabel("Speed Down", JLabel.CENTER);
-		lbl_space.setBounds(100, 340, 500, 50);
-		lbl_space.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_space.setForeground(Color.BLACK);
+		lbl_space = new JLabel("Speed Down", JLABEL_CENTER);
+		lbl_space.setBounds(100, 340, LBL_WIDTH, LBL_HEIGHT);
+		lbl_space.setFont(new Font(ORANGE_KID_FONT, BOLD, FONT_SIZE));
+		lbl_space.setForeground(BLACK_COLOR);
 		lbl_space.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -373,13 +389,13 @@ public class HowToPlayPanel extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lbl_space.setForeground(Color.BLACK);
+				lbl_space.setForeground(BLACK_COLOR);
 				stat = 0;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lbl_space.setForeground(Color.RED);
+				lbl_space.setForeground(RED_COLOR);
 				stat = 6;
 			}
 
@@ -391,10 +407,10 @@ public class HowToPlayPanel extends JPanel {
 		});
 		add(lbl_space);
 
-		back = new JLabel("BACK TO MAIN MENU", JLabel.CENTER);
-		back.setBounds(70, 570, 500, 50);
-		back.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		back.setForeground(Color.BLUE);
+		back = new JLabel("BACK TO MAIN MENU", JLABEL_CENTER);
+		back.setBounds(70, 570, LBL_WIDTH, LBL_HEIGHT);
+		back.setFont(new Font(ORANGE_KID_FONT, BOLD, FONT_SIZE));
+		back.setForeground(BLUE_COLOR);
 		back.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -409,12 +425,12 @@ public class HowToPlayPanel extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				back.setForeground(Color.BLUE);
+				back.setForeground(BLUE_COLOR);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				back.setForeground(Color.YELLOW);
+				back.setForeground(YELLOW_COLOR);
 			}
 
 			@Override

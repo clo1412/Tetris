@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class CurrentPiece extends Piece {
 
+	private static final int BOARD_BLOCKSIZE = Board.BLOCKSIZE;
 	private int normalSpeed = 1000, speedDown = 100, currentSpeed;
 	private long time, lastTime;
 
@@ -16,8 +17,8 @@ public class CurrentPiece extends Piece {
 		time = 0;
 		lastTime = System.currentTimeMillis();
 
-		cX = board.getIndentX() + (board.getGRIDWIDTH() / 2 - (coords[0].length / 2)) * Board.BLOCKSIZE;
-		cY = board.getIndentY() + 4 * Board.BLOCKSIZE - coords.length * Board.BLOCKSIZE;
+		cX = board.getIndentX() + (board.getGRIDWIDTH() / 2 - (coords[0].length / 2)) * BOARD_BLOCKSIZE;
+		cY = board.getIndentY() + 4 * BOARD_BLOCKSIZE - coords.length * BOARD_BLOCKSIZE;
 	}
 
 	@Override
@@ -25,7 +26,7 @@ public class CurrentPiece extends Piece {
 		for (int y = 0; y < coords.length; y++) {
 			for (int x = 0; x < coords[y].length; x++) {
 				if (coords[y][x] != 0)
-					g.drawImage(block, x * Board.BLOCKSIZE + cX, y * Board.BLOCKSIZE + cY, null);
+					g.drawImage(block, x * BOARD_BLOCKSIZE + cX, y * BOARD_BLOCKSIZE + cY, null);
 
 			}
 		}
@@ -46,30 +47,30 @@ public class CurrentPiece extends Piece {
 			for (int row = 0; row < coords.length; row++)
 				for (int col = 0; col < coords[row].length; col++)
 					if (coords[row][col] != 0)
-						board.getBoard()[((cY - board.getIndentY()) / Board.BLOCKSIZE)
-								+ row][((cX - board.getIndentX()) / Board.BLOCKSIZE) + col] = color;
+						board.getBoard()[((cY - board.getIndentY()) / BOARD_BLOCKSIZE)
+								+ row][((cX - board.getIndentX()) / BOARD_BLOCKSIZE) + col] = color;
 			checkLine();
 			board.getPiece();
 		}
 
-		if (cX + dX >= board.getIndentX() && cX + dX + coords[0].length * Board.BLOCKSIZE <= board.getBorderX()) {
+		if (cX + dX >= board.getIndentX() && cX + dX + coords[0].length * BOARD_BLOCKSIZE <= board.getBorderX()) {
 			for (int row = 0; row < coords.length; row++)
 				for (int col = 0; col < coords[row].length; col++)
 					if (coords[row][col] != 0) {
-						if (board.getBoard()[((cY - board.getIndentY()) / Board.BLOCKSIZE)
-								+ row][((cX - board.getIndentX()) / Board.BLOCKSIZE) + col
-										+ (dX / Board.BLOCKSIZE)] != 0)
+						if (board.getBoard()[((cY - board.getIndentY()) / BOARD_BLOCKSIZE)
+								+ row][((cX - board.getIndentX()) / BOARD_BLOCKSIZE) + col
+										+ (dX / BOARD_BLOCKSIZE)] != 0)
 							collisionX = true;
 					}
 			if (!collisionX)
 				cX += dX;
 		}
-		if (cY + Board.BLOCKSIZE + (coords.length * Board.BLOCKSIZE) <= board.getBorderY()) {
+		if (cY + BOARD_BLOCKSIZE + (coords.length * BOARD_BLOCKSIZE) <= board.getBorderY()) {
 			for (int row = 0; row < coords.length; row++)
 				for (int col = 0; col < coords[row].length; col++)
 					if (coords[row][col] != 0) {
-						if (board.getBoard()[((cY - board.getIndentY()) / Board.BLOCKSIZE) + row
-								+ 1][((cX - board.getIndentX()) / Board.BLOCKSIZE) + col] != 0) {
+						if (board.getBoard()[((cY - board.getIndentY()) / BOARD_BLOCKSIZE) + row
+								+ 1][((cX - board.getIndentX()) / BOARD_BLOCKSIZE) + col] != 0) {
 							collisionY = true;
 							if (spacePressed)
 								cY -= 1;
@@ -78,7 +79,7 @@ public class CurrentPiece extends Piece {
 			if (spacePressed)
 				currentSpeed = 1;
 			if (time > currentSpeed) {
-				cY += Board.BLOCKSIZE;
+				cY += BOARD_BLOCKSIZE;
 				time = 0;
 			}
 		} else {
@@ -96,19 +97,19 @@ public class CurrentPiece extends Piece {
 		rotatedMatrix = getTranspose(coords);
 		rotatedMatrix = getReverseMatrix(rotatedMatrix);
 
-		if (cX < board.getIndentX() || cX + (rotatedMatrix[0].length * Board.BLOCKSIZE) > board.getBorderX()
-				|| cY + (rotatedMatrix.length * Board.BLOCKSIZE) < board.getIndentY()
-				|| cY + (rotatedMatrix.length * Board.BLOCKSIZE) > board.getBorderY()) {
-			while (cX + (rotatedMatrix[0].length * Board.BLOCKSIZE) > board.getBorderX())
-				cX -= Board.BLOCKSIZE;
+		if (cX < board.getIndentX() || cX + (rotatedMatrix[0].length * BOARD_BLOCKSIZE) > board.getBorderX()
+				|| cY + (rotatedMatrix.length * BOARD_BLOCKSIZE) < board.getIndentY()
+				|| cY + (rotatedMatrix.length * BOARD_BLOCKSIZE) > board.getBorderY()) {
+			while (cX + (rotatedMatrix[0].length * BOARD_BLOCKSIZE) > board.getBorderX())
+				cX -= BOARD_BLOCKSIZE;
 
 		}
 
 		for (int row = 0; row < rotatedMatrix.length; row++)
 			for (int col = 0; col < rotatedMatrix[row].length; col++)
 				if (rotatedMatrix[row][col] != 0) {
-					if (board.getBoard()[((cY - board.getIndentY()) / Board.BLOCKSIZE) + row
-							+ 1][((cX - board.getIndentX()) / Board.BLOCKSIZE) + col] != 0) {
+					if (board.getBoard()[((cY - board.getIndentY()) / BOARD_BLOCKSIZE) + row
+							+ 1][((cX - board.getIndentX()) / BOARD_BLOCKSIZE) + col] != 0) {
 						return;
 					}
 				}

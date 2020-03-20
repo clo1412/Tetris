@@ -19,11 +19,21 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MainMenuPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final int CENTER_JLABEL = JLabel.CENTER;
+	private static final String ORANGE_KID_FONT = "Orange Kid";
+	private static final String AUDIO_FILE_PATH = "Sprites/TonariNoTotoro.wav";
+	private static final Color YELLOW_COLOR = Color.YELLOW;
+	private static final Color BLACK_COLOR = Color.BLACK;
+	private static final int BOLD = Font.BOLD;
 	JLabel title, upTitle, upUpTitle;
 	JLabel play, exit, howToPlay;
 	BufferedImage cube;
 	BufferedImage img;
-	Clip clip;
+	static Clip clip;
 	private String highscore = "0";
 	private int currHighscore = 0;
 	private int newHighscore = 0;
@@ -54,39 +64,33 @@ public class MainMenuPanel extends JPanel {
 			e.printStackTrace();
 		}
 
-		// title = new JLabel("TETRIS 2019", JLabel.CENTER);
-		// title.setBounds(50, 0, 500, 50);
-		// title.setFont(new Font("Helvetica", Font.BOLD, 36));
-		// title.setForeground(Color.BLUE);
-		// add(title);
 
-		play = new JLabel("Play", JLabel.CENTER);
+		play = new JLabel("Play", CENTER_JLABEL);
 		play.setBounds(60, 170, 500, 50);
-		play.setFont(new Font("Orange Kid", Font.BOLD, 36));
-		play.setForeground(Color.BLACK);
+		
+		play.setFont(new Font(ORANGE_KID_FONT, BOLD, 36));
+		play.setForeground(BLACK_COLOR);
 		play.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent arg0) {
-				play.setForeground(Color.BLACK);
+				play.setForeground(BLACK_COLOR);
 
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				play.setForeground(Color.YELLOW);
+				play.setForeground(YELLOW_COLOR);
 
 			}
 
@@ -98,33 +102,31 @@ public class MainMenuPanel extends JPanel {
 		});
 		add(play);
 
-		howToPlay = new JLabel("How To Play", JLabel.CENTER);
+		howToPlay = new JLabel("How To Play", CENTER_JLABEL);
 		howToPlay.setBounds(60, 213, 500, 50);
-		howToPlay.setFont(new Font("Orange Kid", Font.BOLD, 36));
-		howToPlay.setForeground(Color.BLACK);
+		howToPlay.setFont(new Font(ORANGE_KID_FONT, BOLD, 36));
+		howToPlay.setForeground(BLACK_COLOR);
 		howToPlay.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent arg0) {
-				howToPlay.setForeground(Color.BLACK);
+				howToPlay.setForeground(BLACK_COLOR);
 
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				howToPlay.setForeground(Color.YELLOW);
+				howToPlay.setForeground(YELLOW_COLOR);
 
 			}
 
@@ -136,14 +138,13 @@ public class MainMenuPanel extends JPanel {
 		});
 		add(howToPlay);
 
-		exit = new JLabel("Exit", JLabel.CENTER);
+		exit = new JLabel("Exit", CENTER_JLABEL);
 		exit.setBounds(60, 250, 500, 50);
-		exit.setFont(new Font("Orange Kid", Font.BOLD, 36));
-		exit.setForeground(Color.BLACK);
+		exit.setFont(new Font(ORANGE_KID_FONT, BOLD, 36));
+		exit.setForeground(BLACK_COLOR);
 		exit.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
 
 			}
 
@@ -154,13 +155,13 @@ public class MainMenuPanel extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				exit.setForeground(Color.BLACK);
+				exit.setForeground(BLACK_COLOR);
 
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				exit.setForeground(Color.YELLOW);
+				exit.setForeground(YELLOW_COLOR);
 
 			}
 
@@ -172,10 +173,9 @@ public class MainMenuPanel extends JPanel {
 		});
 		add(exit);
 
-		// masukkin sound
 		try {
 			clip = AudioSystem.getClip();
-			AudioInputStream stream = AudioSystem.getAudioInputStream(new File("Sprites/TonariNoTotoro.wav"));
+			AudioInputStream stream = AudioSystem.getAudioInputStream(new File(AUDIO_FILE_PATH));
 			clip.open(stream);
 			clip.start();
 		} catch (LineUnavailableException | UnsupportedAudioFileException | IOException e1) {

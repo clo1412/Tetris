@@ -3,7 +3,6 @@ package source;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -13,11 +12,14 @@ import javax.swing.JOptionPane;
 
 public class ButtonPanel extends JButton implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JButton btnPlay = new JButton("PLAY");
 	ImageIcon help = new ImageIcon("help.png");
 	JButton btnHelp = new JButton("HELP");
-	private BufferedImage icon;
-
+	
 	public ButtonPanel() {
 		System.out.println("a");
 		setLayout(new FlowLayout());
@@ -31,7 +33,7 @@ public class ButtonPanel extends JButton implements ActionListener {
 
 	private void initializeIcon() {
 		try {
-			icon = ImageIO.read(Board.class.getResource("/icon.png"));
+			ImageIO.read(Board.class.getResource("/icon.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +67,6 @@ public class ButtonPanel extends JButton implements ActionListener {
 			JOptionPane.showMessageDialog(this,
 					"W/ ^ = rotate\nA/Arrow <- = Left" + "\nD/Arrow -> = Right\nShift = Change Brick");
 		}
-
 	}
 
 }
